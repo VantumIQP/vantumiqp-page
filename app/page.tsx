@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react"
 
+import { BackToTop } from "@/components/landing/back-to-top"
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
 import { SectionHeading } from "@/components/landing/section-heading"
 import { WorkflowSection } from "@/components/landing/workflow-section"
@@ -102,12 +103,6 @@ export default function Page() {
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="#demo"
-              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
-            >
-              Sign in
-            </a>
-            <a
-              href="#demo"
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "h-10 rounded-full bg-primary px-4 text-primary-foreground hover:bg-primary/90"
@@ -131,11 +126,11 @@ export default function Page() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.16),transparent_26%),linear-gradient(180deg,rgba(7,17,22,0.22),rgba(7,17,22,0.82)_68%,rgba(7,17,22,0.96))]" />
 
           <div className="relative flex min-h-[720px] flex-col items-center px-5 pt-8 pb-7 text-center sm:px-8 lg:px-10">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center gap-2">
               <Badge className="rounded-full border border-primary-foreground/15 bg-primary-foreground/10 px-3 py-1 text-[0.68rem] tracking-[0.28em] text-primary-foreground uppercase hover:bg-primary-foreground/10">
                 Powered by Apache Superset
               </Badge>
-              <div className="hidden items-center gap-2 text-xs text-primary-foreground/70 sm:flex">
+              <div className="flex items-center gap-2 text-xs text-primary-foreground/70">
                 <Sparkles className="size-3.5" />
                 Demo access available now
               </div>
@@ -175,11 +170,11 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="mt-10 grid w-full max-w-4xl gap-3 sm:grid-cols-3">
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
               {proofPoints.map((point) => (
                 <div
                   key={point}
-                  className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/10 px-4 py-3 text-sm text-primary-foreground/80 backdrop-blur"
+                  className="rounded-full border border-primary-foreground/15 bg-primary-foreground/10 px-4 py-1.5 text-sm text-primary-foreground/80 backdrop-blur"
                 >
                   {point}
                 </div>
@@ -345,6 +340,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <BackToTop />
 
       <footer className="px-4 pt-10 pb-8 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
