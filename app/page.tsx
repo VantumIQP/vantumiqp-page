@@ -11,6 +11,7 @@ import {
 
 import { BackToTop } from "@/components/landing/back-to-top"
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
+import { Navbar } from "@/components/landing/navbar"
 import { SectionHeading } from "@/components/landing/section-heading"
 import { WorkflowSection } from "@/components/landing/workflow-section"
 import { Badge } from "@/components/ui/badge"
@@ -72,47 +73,9 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
 
 export default function Page() {
   return (
-    <main className="min-h-svh overflow-hidden bg-background text-foreground">
-      <header className="relative z-20 border-b border-border bg-background/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#" className="flex items-center gap-3">
-            <BrandMark />
-            <span className="text-base font-medium tracking-[-0.03em]">
-              VantumIQP
-            </span>
-          </a>
-
-          <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a
-              href="#product"
-              className="transition-colors hover:text-foreground"
-            >
-              Product
-            </a>
-            <a
-              href="#workflow"
-              className="transition-colors hover:text-foreground"
-            >
-              Workflow
-            </a>
-            <a href="#demo" className="transition-colors hover:text-foreground">
-              Demo
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href="#demo"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "h-10 rounded-full bg-primary px-4 text-primary-foreground hover:bg-primary/90"
-              )}
-            >
-              Request demo
-            </a>
-          </div>
-        </div>
-      </header>
+    <>
+      <Navbar />
+      <main className="min-h-svh overflow-hidden bg-background pt-[69px] text-foreground">
 
       <section className="px-4 pt-4 sm:px-6 lg:px-8">
         <div className="relative mx-auto min-h-[720px] max-w-7xl overflow-hidden rounded-xl border border-border bg-card text-primary-foreground shadow-[0_30px_90px_rgba(15,23,42,0.18)]">
@@ -369,5 +332,6 @@ export default function Page() {
         </div>
       </footer>
     </main>
+    </>
   )
 }
