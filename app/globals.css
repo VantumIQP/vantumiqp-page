@@ -116,6 +116,11 @@
     --sidebar-ring: oklch(0.56 0.021 213.5);
 }
 
+@keyframes workflow-progress {
+  from { width: 0% }
+  to   { width: 100% }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

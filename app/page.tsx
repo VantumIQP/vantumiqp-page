@@ -11,9 +11,9 @@ import {
 
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
 import { SectionHeading } from "@/components/landing/section-heading"
+import { WorkflowSection } from "@/components/landing/workflow-section"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -47,32 +47,6 @@ const capabilities = [
     title: "See the signal faster",
     description:
       "Bring leaders to the same source of truth with clear summaries and decision-ready views.",
-  },
-]
-
-const workflow = [
-  {
-    step: "01",
-    title: "Connect",
-    description: "Bring in the datasets your team already trusts.",
-  },
-  {
-    step: "02",
-    title: "Explore",
-    description:
-      "Write SQL, slice metrics, and inspect the story behind the numbers.",
-  },
-  {
-    step: "03",
-    title: "Visualize",
-    description:
-      "Turn findings into charts, dashboards, and executive-ready summaries.",
-  },
-  {
-    step: "04",
-    title: "Share",
-    description:
-      "Give every stakeholder a view that matches their role and context.",
   },
 ]
 
@@ -280,56 +254,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="workflow" className="px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-          <div className="space-y-8">
-            <SectionHeading
-              eyebrow="Workflow"
-              title="A simpler path from asking to knowing."
-              description="The product should feel as legible as the outcome. Each step is there to shorten the distance between a question and a decision."
-            />
-
-            <div className="space-y-5">
-              {workflow.map((item, index) => (
-                <div
-                  key={item.step}
-                  className="grid grid-cols-[auto_1fr] gap-4"
-                >
-                  <div className="pt-1 text-xs font-medium tracking-[0.28em] text-muted-foreground">
-                    {item.step}
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="text-base font-medium">{item.title}</h3>
-                    <p className="text-sm leading-6 text-muted-foreground">
-                      {item.description}
-                    </p>
-                    {index !== workflow.length - 1 ? (
-                      <Separator className="mt-5 bg-black/10" />
-                    ) : null}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -inset-8 -z-10 rounded-xl bg-primary/10 blur-3xl" />
-            <div className="rounded-xl border border-border bg-card p-5 shadow-sm sm:p-6">
-              <div className="grid gap-4 sm:grid-cols-2">
-                {capabilities.slice(0, 2).map(({ icon: Icon, title, description }) => (
-                  <div key={title} className="rounded-lg bg-muted p-4">
-                    <Icon className="size-4 text-primary" />
-                    <h3 className="mt-4 text-sm font-medium">{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WorkflowSection />
 
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[1.1fr_0.9fr]">
