@@ -17,6 +17,7 @@ import { WorkflowSection } from "@/components/landing/workflow-section"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { buttonVariants } from "@/components/ui/button"
+import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
 import { cn } from "@/lib/utils"
 
 const proofPoints = [
@@ -61,7 +62,7 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
       )}
     >
       <Image
-        src="/images/vantumiqp/vantumiqp_logo.png"
+        src={BRAND_LOGO_SRC}
         alt="VantumIQP logo"
         fill
         priority={!compact}

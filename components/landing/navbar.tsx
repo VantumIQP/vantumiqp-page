@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
+import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
@@ -48,15 +49,15 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-[0_1px_16px_rgba(0,0,0,0.07)]"
-          : "bg-background border-b border-transparent"
+          ? "border-b border-border bg-background/95 shadow-[0_1px_16px_rgba(0,0,0,0.07)] backdrop-blur-md"
+          : "border-b border-transparent bg-background"
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-3">
-          <div className="relative h-7 w-10 shrink-0">
+        <a href="#" className="flex items-center gap-1">
+          <div className="relative h-12 w-12 shrink-0">
             <Image
-              src="/images/vantumiqp/vantumiqp_logo.png"
+              src={BRAND_LOGO_SRC}
               alt="VantumIQP logo"
               fill
               priority
@@ -79,7 +80,7 @@ export function Navbar() {
                 className={cn(
                   "relative py-0.5 transition-colors",
                   isActive
-                    ? "text-foreground font-medium"
+                    ? "font-medium text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -142,7 +143,7 @@ export function Navbar() {
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="border-b border-border/50 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground last:border-0"
+              className="border-b border-border/50 py-3 text-sm text-muted-foreground transition-colors last:border-0 hover:text-foreground"
             >
               {label}
             </a>

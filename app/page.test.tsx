@@ -16,6 +16,7 @@ describe("VantumIQP landing page", () => {
     const html = renderToStaticMarkup(<Page />)
 
     expect(html).toContain('alt="VantumIQP logo"')
+    expect(html).toContain("vantumiqp_logo-2026-05-19.png")
     expect(html).toContain("object-contain")
   })
 
