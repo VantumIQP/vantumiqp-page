@@ -17,5 +17,17 @@ This will place the ui components in the `components` directory.
 To use the components in your app, import them as follows:
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 ```
+
+## Demo form submissions
+
+The CTA form submits to Formspree. Set the public form ID before running or
+deploying the site:
+
+```bash
+NEXT_PUBLIC_FORMSPREE_FORM_ID=your-form-id
+```
+
+You can also set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` to the full
+`https://formspree.io/f/your-form-id` endpoint.
