@@ -61,6 +61,7 @@ export function Navbar() {
               alt="VantumIQP logo"
               fill
               priority
+              sizes="48px"
               className="object-contain"
             />
           </div>

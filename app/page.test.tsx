@@ -16,7 +16,7 @@ describe("VantumIQP landing page", () => {
     const html = renderToStaticMarkup(<Page />)
 
     expect(html).toContain('alt="VantumIQP logo"')
-    expect(html).toContain("vantumiqp_logo-2026-05-19.png")
+    expect(html).toContain("vantumiqp_logo.png")
     expect(html).toContain("object-contain")
   })
 
@@ -26,6 +26,9 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain("VantumIQP is a calm BI workspace")
     expect(html).toContain("See VantumIQP on your own reporting questions.")
     expect(html).toContain('alt="VantumIQP dashboard screenshot"')
+    expect(html).toContain("dashboard-3.jpg")
+    expect(html).toContain("sql-editor.jpg")
+    expect(html).toContain("make-visual.jpg")
   })
 
   test("uses tokenized shadcn radii for the page surfaces", () => {
