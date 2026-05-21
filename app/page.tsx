@@ -417,10 +417,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section
-          id="demo"
-          className="scroll-mt-24 px-4 pb-4 sm:px-6 lg:px-8"
-        >
+        <section id="demo" className="scroll-mt-24 px-4 pb-4 sm:px-6 lg:px-8">
           <div
             data-animate="demo-panel"
             className="relative mx-auto overflow-hidden rounded-xl bg-primary px-5 py-6 text-primary-foreground shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 lg:max-w-7xl lg:px-10 lg:py-10"
@@ -492,6 +489,18 @@ export default function Page() {
                 className="transition-colors hover:text-foreground"
               >
                 Demo
+              </a>
+              <a
+                href="/privacy"
+                className="transition-colors hover:text-foreground"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="/terms"
+                className="transition-colors hover:text-foreground"
+              >
+                Terms
               </a>
             </div>
           </div>

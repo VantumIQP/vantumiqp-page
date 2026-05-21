@@ -44,5 +44,11 @@ describe("SEO metadata", () => {
     expect(robots?.sitemap).toContain("/sitemap.xml")
     expect(sitemap?.[0].url).toMatch(/^https:\/\/.+/)
     expect(sitemap?.[0].changeFrequency).toBe("monthly")
+    expect(sitemap?.map((entry) => entry.url)).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining("/privacy"),
+        expect.stringContaining("/terms"),
+      ])
+    )
   })
 })

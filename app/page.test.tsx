@@ -107,4 +107,13 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain('"@type":"FAQPage"')
     expect(html).toContain("What is VantumIQP?")
   })
+
+  test("links to the public legal pages from the footer", () => {
+    const html = renderPage()
+
+    expect(html).toContain('href="/privacy"')
+    expect(html).toContain("Privacy Policy")
+    expect(html).toContain('href="/terms"')
+    expect(html).toContain("Terms")
+  })
 })
