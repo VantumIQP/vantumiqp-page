@@ -54,14 +54,14 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-1">
-          <div className="relative h-12 w-12 shrink-0">
+        <a href="#" className="flex items-center gap-1.5">
+          <div className="relative h-8 w-8 shrink-0 sm:h-9 sm:w-9 lg:h-10 lg:w-10">
             <Image
               src={BRAND_LOGO_SRC}
               alt="VantumIQP logo"
               fill
               priority
-              sizes="48px"
+              sizes="(min-width: 1024px) 40px, (min-width: 640px) 36px, 32px"
               className="object-contain"
             />
           </div>

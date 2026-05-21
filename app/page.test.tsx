@@ -20,6 +20,17 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain("object-contain")
   })
 
+  test("scales the navbar logo across screen breakpoints", () => {
+    const html = renderToStaticMarkup(<Page />)
+
+    expect(html).toContain("h-8 w-8")
+    expect(html).toContain("sm:h-9 sm:w-9")
+    expect(html).toContain("lg:h-10 lg:w-10")
+    expect(html).toContain(
+      'sizes="(min-width: 1024px) 40px, (min-width: 640px) 36px, 32px"'
+    )
+  })
+
   test("uses the VantumIQP name and shows a real product screenshot", () => {
     const html = renderToStaticMarkup(<Page />)
 
