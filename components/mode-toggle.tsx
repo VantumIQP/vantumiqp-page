@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button"
 
 export function ModeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = React.useSyncExternalStore(
+    subscribeClientReady,
+    getClientReadySnapshot,
+    getServerClientReadySnapshot
+  )
 
   const isDark = mounted && resolvedTheme === "dark"
 
@@ -29,4 +29,16 @@ export function ModeToggle() {
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
+}
+
+function subscribeClientReady() {
+  return () => {}
+}
+
+function getClientReadySnapshot() {
+  return true
+}
+
+function getServerClientReadySnapshot() {
+  return false
 }

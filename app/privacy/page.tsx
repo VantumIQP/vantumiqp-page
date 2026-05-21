@@ -55,6 +55,14 @@ const privacySections = [
     ],
   },
   {
+    title: "Cookie choices",
+    body: [
+      "Essential storage is always active because it is needed to operate the website, remember privacy choices, protect the site, and process forms you submit.",
+      "Optional categories are grouped as preferences, analytics, and marketing. These categories are prepared for future tools and remain off unless you allow them in the cookie preferences control.",
+      "You can reopen Cookie preferences from the website footer to accept, reject, or customize optional categories at any time.",
+    ],
+  },
+  {
     title: "Sharing and processors",
     body: [
       "We do not sell your personal information. We share information only with service providers that help us operate the site, process demo requests, provide analytics, host infrastructure, secure the service, or comply with legal obligations.",

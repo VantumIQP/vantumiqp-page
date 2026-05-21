@@ -14,6 +14,9 @@ describe("Legal pages", () => {
     expect(html).toContain("Formspree")
     expect(html).toContain("Vercel Analytics")
     expect(html).toContain("Microsoft Clarity")
+    expect(html).toContain("Cookie choices")
+    expect(html).toContain("Essential storage is always active")
+    expect(html).toContain("preferences, analytics, and marketing")
   })
 
   test("publishes terms that identify the operator and demo-access scope", () => {

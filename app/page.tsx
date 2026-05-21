@@ -10,6 +10,7 @@ import {
 } from "lucide-react"
 
 import { BackToTop } from "@/components/landing/back-to-top"
+import { CookiePreferencesLink } from "@/components/cookie-consent/cookie-preferences-link"
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
 import { LandingMotion } from "@/components/landing/landing-motion"
 import { Navbar } from "@/components/landing/navbar"
@@ -502,6 +503,7 @@ export default function Page() {
               >
                 Terms
               </a>
+              <CookiePreferencesLink />
             </div>
           </div>
         </footer>

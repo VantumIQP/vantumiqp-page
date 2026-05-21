@@ -62,7 +62,7 @@ describe("VantumIQP landing page", () => {
   test("uses semantic shell colors and the revised navbar actions", () => {
     const html = renderPage()
 
-    expect(html).toContain("Sign in")
+    expect(html).toContain("Request demo")
     expect(html).toContain("bg-background")
     expect(html).not.toContain("bg-[#f6f7f3]")
   })
@@ -115,5 +115,6 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain("Privacy Policy")
     expect(html).toContain('href="/terms"')
     expect(html).toContain("Terms")
+    expect(html).toContain("Cookie preferences")
   })
 })

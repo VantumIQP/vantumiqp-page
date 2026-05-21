@@ -1,6 +1,7 @@
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
+import { CookieConsentProvider } from "@/components/cookie-consent/cookie-consent-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 
@@ -37,7 +38,9 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <CookieConsentProvider>{children}</CookieConsentProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
