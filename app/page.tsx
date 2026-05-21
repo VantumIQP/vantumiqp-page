@@ -113,16 +113,17 @@ export default function Page() {
             data-animate="hero-shell"
             className="relative mx-auto min-h-[720px] max-w-7xl overflow-hidden rounded-xl border border-border bg-card text-primary-foreground shadow-[0_30px_90px_rgba(15,23,42,0.18)]"
           >
-            <Image
-              src="/images/vantumiqp/night-sea.avif"
-              alt=""
-              data-animate="image-parallax"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="(min-width: 1280px) 1280px, 100vw"
-              className="object-cover"
-            />
+            <div data-animate="surface-media" className="absolute inset-0">
+              <Image
+                src="/images/vantumiqp/night-sea.avif"
+                alt=""
+                fill
+                priority
+                fetchPriority="high"
+                sizes="(min-width: 1280px) 1280px, 100vw"
+                className="object-cover"
+              />
+            </div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.16),transparent_26%),linear-gradient(180deg,rgba(7,17,22,0.22),rgba(7,17,22,0.82)_68%,rgba(7,17,22,0.96))]" />
 
             <div className="relative flex min-h-[720px] flex-col items-center px-5 pt-8 pb-7 text-center sm:px-8 lg:px-10">
@@ -205,11 +206,13 @@ export default function Page() {
                   <span>Live product view</span>
                   <span>SaaS dashboard example</span>
                 </div>
-                <div className="relative aspect-[16/8] bg-card">
+                <div
+                  data-animate="surface-media"
+                  className="relative aspect-[16/8] bg-card"
+                >
                   <Image
                     src="/images/vantumiqp/dashboard-screenshot.png"
                     alt="VantumIQP dashboard screenshot"
-                    data-animate="card-image"
                     fill
                     loading="lazy"
                     fetchPriority="low"
@@ -240,12 +243,13 @@ export default function Page() {
                   <span>Dashboard workspace</span>
                   <span>Published view</span>
                 </div>
-                <div className="relative aspect-[16/8.8] overflow-hidden rounded-lg bg-card">
+                <div
+                  data-animate="surface-media"
+                  className="relative aspect-[16/8.8] overflow-hidden rounded-lg bg-card"
+                >
                   <Image
                     src="/images/vantumiqp/dashboard-3.jpg"
                     alt="Detailed sales dashboard inside VantumIQP"
-                    data-animate="card-image"
-                    data-parallax="image"
                     fill
                     loading="lazy"
                     fetchPriority="low"
@@ -280,11 +284,13 @@ export default function Page() {
                     data-motion="lift"
                     className="border-border bg-card py-0 shadow-sm"
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted">
+                    <div
+                      data-animate="surface-media"
+                      className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted"
+                    >
                       <Image
                         src={imageSrc}
                         alt={imageAlt}
-                        data-animate="card-image"
                         fill
                         loading="lazy"
                         fetchPriority="low"
@@ -343,16 +349,17 @@ export default function Page() {
               data-motion="lift"
               className="relative min-h-[360px] overflow-hidden rounded-xl border border-border"
             >
-              <Image
-                src="/images/vantumiqp/sunset-sea.avif"
-                alt=""
-                data-animate="image-parallax"
-                fill
-                loading="lazy"
-                fetchPriority="low"
-                sizes="(min-width: 1024px) 55vw, 100vw"
-                className="object-cover"
-              />
+              <div data-animate="surface-media" className="absolute inset-0">
+                <Image
+                  src="/images/vantumiqp/sunset-sea.avif"
+                  alt=""
+                  fill
+                  loading="lazy"
+                  fetchPriority="low"
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-foreground/78 via-foreground/30 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground sm:p-8">
                 <Badge className="mb-4 rounded-full border border-primary-foreground/15 bg-primary-foreground/10 px-3 py-1 text-[0.68rem] tracking-[0.28em] text-primary-foreground uppercase hover:bg-primary-foreground/10">
@@ -409,16 +416,17 @@ export default function Page() {
             data-animate="demo-panel"
             className="relative mx-auto overflow-hidden rounded-xl bg-primary px-5 py-6 text-primary-foreground shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 lg:max-w-7xl lg:px-10 lg:py-10"
           >
-            <Image
-              src="/images/vantumiqp/hero-aurora.avif"
-              alt=""
-              data-animate="image-parallax"
-              fill
-              loading="lazy"
-              fetchPriority="low"
-              sizes="(min-width: 1024px) 1280px, 100vw"
-              className="object-cover opacity-35"
-            />
+            <div data-animate="surface-media" className="absolute inset-0">
+              <Image
+                src="/images/vantumiqp/hero-aurora.avif"
+                alt=""
+                fill
+                loading="lazy"
+                fetchPriority="low"
+                sizes="(min-width: 1024px) 1280px, 100vw"
+                className="object-cover opacity-35"
+              />
+            </div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.14),transparent_28%),linear-gradient(90deg,rgba(0,0,0,0.32),rgba(0,0,0,0.2))]" />
 
             <div className="relative grid gap-8 lg:grid-cols-[0.72fr_1.08fr] lg:items-center">

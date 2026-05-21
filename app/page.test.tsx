@@ -72,6 +72,15 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain('data-animate="demo-panel"')
   })
 
+  test("keeps GSAP transforms off Next image elements", () => {
+    const html = renderPage()
+
+    expect(html).toContain('data-animate="surface-media"')
+    expect(html).not.toContain('data-animate="image-parallax"')
+    expect(html).not.toContain('data-animate="card-image"')
+    expect(html).not.toContain('data-parallax="image"')
+  })
+
   test("gives image fetch priority based on viewport importance", () => {
     const html = renderPage()
 
