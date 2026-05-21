@@ -22,7 +22,7 @@ export const COOKIE_CONSENT_CATEGORIES = [
     id: "analytics",
     title: "Analytics",
     description:
-      "Helps us understand aggregate site performance and page usage when analytics tools are added.",
+      "Allows Vercel Analytics to measure aggregate site performance and page usage.",
     required: false,
   },
   {

@@ -102,9 +102,9 @@ export function CookieConsentDialog({
               We use essential storage to run this website.
             </p>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Optional preferences, analytics, and marketing categories are
-              ready for future tools and stay off unless you allow them. You can
-              change this choice any time in{" "}
+              Optional preferences, analytics, and marketing categories stay off
+              unless you allow them. Analytics enables Vercel Analytics for
+              aggregate page usage. You can change this choice any time in{" "}
               <Link
                 href="/privacy"
                 className="font-medium text-foreground underline underline-offset-4"

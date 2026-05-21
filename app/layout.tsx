@@ -1,6 +1,7 @@
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
+import { VercelAnalytics } from "@/components/analytics/vercel-analytics"
 import { CookieConsentProvider } from "@/components/cookie-consent/cookie-consent-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
@@ -39,7 +40,10 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <CookieConsentProvider>{children}</CookieConsentProvider>
+          <CookieConsentProvider>
+            {children}
+            <VercelAnalytics />
+          </CookieConsentProvider>
         </ThemeProvider>
       </body>
     </html>
