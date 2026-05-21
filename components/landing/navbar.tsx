@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { ModeToggle } from "@/components/mode-toggle"
 
 const navLinks = [
   { href: "#product", label: "Product" },
@@ -98,14 +99,8 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
-          <a
-            href="#demo"
-            data-animate="nav-link"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Sign in
-          </a>
+        <div className="hidden items-center gap-2 md:flex">
+          <ModeToggle />
           <a
             href="#demo"
             data-animate="interactive-button"
@@ -119,6 +114,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <ModeToggle />
           <a
             href="#demo"
             data-animate="interactive-button"
@@ -157,14 +153,6 @@ export function Navbar() {
               {label}
             </a>
           ))}
-          <a
-            href="#demo"
-            data-animate="nav-link"
-            onClick={() => setMenuOpen(false)}
-            className="py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Sign in
-          </a>
         </nav>
       </div>
     </header>
