@@ -33,6 +33,14 @@ describe("VantumIQP landing page", () => {
     )
   })
 
+  test("offsets navbar anchor targets below the fixed header", () => {
+    const html = renderPage()
+
+    for (const sectionId of ["product", "workflow", "answers", "demo"]) {
+      expect(html).toContain(`id="${sectionId}" class="scroll-mt-24`)
+    }
+  })
+
   test("uses the VantumIQP name and shows a real product screenshot", () => {
     const html = renderPage()
 

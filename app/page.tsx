@@ -225,7 +225,10 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="product" className="px-4 py-20 sm:px-6 lg:px-8">
+        <section
+          id="product"
+          className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8"
+        >
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
               <SectionHeading
@@ -319,7 +322,10 @@ export default function Page() {
 
         <WorkflowSection />
 
-        <section id="answers" className="px-4 pb-20 sm:px-6 lg:px-8">
+        <section
+          id="answers"
+          className="scroll-mt-24 px-4 pb-20 sm:px-6 lg:px-8"
+        >
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <SectionHeading
               eyebrow="Answers"
@@ -411,7 +417,10 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="demo" className="px-4 pb-4 sm:px-6 lg:px-8">
+        <section
+          id="demo"
+          className="scroll-mt-24 px-4 pb-4 sm:px-6 lg:px-8"
+        >
           <div
             data-animate="demo-panel"
             className="relative mx-auto overflow-hidden rounded-xl bg-primary px-5 py-6 text-primary-foreground shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 lg:max-w-7xl lg:px-10 lg:py-10"
