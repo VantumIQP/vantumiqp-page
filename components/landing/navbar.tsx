@@ -10,6 +10,7 @@ import { buttonVariants } from "@/components/ui/button"
 const navLinks = [
   { href: "#product", label: "Product" },
   { href: "#workflow", label: "Workflow" },
+  { href: "#answers", label: "Answers" },
   { href: "#demo", label: "Demo" },
 ]
 
@@ -25,7 +26,7 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    const sectionIds = ["product", "workflow", "demo"]
+    const sectionIds = navLinks.map(({ href }) => href.slice(1))
     const observers: IntersectionObserver[] = []
 
     sectionIds.forEach((id) => {
@@ -62,6 +63,7 @@ export function Navbar() {
               alt="VantumIQP logo"
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 1024px) 40px, (min-width: 640px) 36px, 32px"
               className="object-contain"
             />

@@ -31,3 +31,12 @@ NEXT_PUBLIC_FORMSPREE_FORM_ID=your-form-id
 
 You can also set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` to the full
 `https://formspree.io/f/your-form-id` endpoint.
+
+## SEO configuration
+
+Set the public production URL so canonical metadata, robots, sitemap, and JSON-LD
+use the deployed domain:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://vantumiqp.com
+```

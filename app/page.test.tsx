@@ -4,8 +4,10 @@ import { renderToStaticMarkup } from "react-dom/server"
 import Page from "./page"
 
 describe("VantumIQP landing page", () => {
+  const renderPage = () => renderToStaticMarkup(<Page />)
+
   test("prioritizes demo access over pricing", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).toContain("Request demo access")
     expect(html).toContain("Powered by Apache Superset")
@@ -13,7 +15,7 @@ describe("VantumIQP landing page", () => {
   })
 
   test("renders the provided logo without cover-cropping it", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).toContain('alt="VantumIQP logo"')
     expect(html).toContain("vantumiqp_logo.png")
@@ -21,7 +23,7 @@ describe("VantumIQP landing page", () => {
   })
 
   test("scales the navbar logo across screen breakpoints", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).toContain("h-8 w-8")
     expect(html).toContain("sm:h-9 sm:w-9")
@@ -32,7 +34,7 @@ describe("VantumIQP landing page", () => {
   })
 
   test("uses the VantumIQP name and shows a real product screenshot", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).toContain("VantumIQP is a calm BI workspace")
     expect(html).toContain("See VantumIQP on your own reporting questions.")
@@ -43,14 +45,14 @@ describe("VantumIQP landing page", () => {
   })
 
   test("uses tokenized shadcn radii for the page surfaces", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).not.toContain("rounded-[2rem]")
     expect(html).not.toContain("rounded-[1.75rem]")
   })
 
   test("uses semantic shell colors and the revised navbar actions", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).toContain("Sign in")
     expect(html).toContain("bg-background")
@@ -58,7 +60,7 @@ describe("VantumIQP landing page", () => {
   })
 
   test("exposes stable hooks for GSAP micro animations", () => {
-    const html = renderToStaticMarkup(<Page />)
+    const html = renderPage()
 
     expect(html).toContain('data-gsap-scope="landing"')
     expect(html).toContain('data-animate="hero-title"')
@@ -68,5 +70,24 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain('data-animate="product-preview"')
     expect(html).toContain('data-animate="workflow-shell"')
     expect(html).toContain('data-animate="demo-panel"')
+  })
+
+  test("gives image fetch priority based on viewport importance", () => {
+    const html = renderPage()
+
+    expect(html).toContain('fetchPriority="high"')
+    expect(html).toContain("night-sea.avif")
+
+    const lowPriorityImages = html.match(/fetchPriority="low"/g) ?? []
+    expect(lowPriorityImages.length).toBeGreaterThanOrEqual(8)
+  })
+
+  test("publishes answer-focused structured data for AI and search extraction", () => {
+    const html = renderPage()
+
+    expect(html).toContain('type="application/ld+json"')
+    expect(html).toContain('"@type":"SoftwareApplication"')
+    expect(html).toContain('"@type":"FAQPage"')
+    expect(html).toContain("What is VantumIQP?")
   })
 })

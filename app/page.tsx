@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { buttonVariants } from "@/components/ui/button"
 import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
+import { faqItems, structuredData } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 
 const proofPoints = [
@@ -74,6 +75,8 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
         alt="VantumIQP logo"
         fill
         priority={!compact}
+        loading={compact ? "lazy" : undefined}
+        fetchPriority={compact ? "low" : "high"}
         sizes={compact ? "32px" : "40px"}
         className="object-contain"
       />
@@ -81,9 +84,24 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
   )
 }
 
+function StructuredData() {
+  return (
+    <>
+      {structuredData.map((entry) => (
+        <script
+          key={entry["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
+        />
+      ))}
+    </>
+  )
+}
+
 export default function Page() {
   return (
     <>
+      <StructuredData />
       <Navbar />
       <LandingMotion />
       <main
@@ -101,6 +119,7 @@ export default function Page() {
               data-animate="image-parallax"
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 1280px) 1280px, 100vw"
               className="object-cover"
             />
@@ -192,6 +211,8 @@ export default function Page() {
                     alt="VantumIQP dashboard screenshot"
                     data-animate="card-image"
                     fill
+                    loading="lazy"
+                    fetchPriority="low"
                     sizes="(min-width: 1024px) 960px, 90vw"
                     className="object-cover object-top"
                   />
@@ -226,6 +247,8 @@ export default function Page() {
                     data-animate="card-image"
                     data-parallax="image"
                     fill
+                    loading="lazy"
+                    fetchPriority="low"
                     sizes="(min-width: 1024px) 680px, 90vw"
                     className="object-cover object-top"
                   />
@@ -263,6 +286,8 @@ export default function Page() {
                         alt={imageAlt}
                         data-animate="card-image"
                         fill
+                        loading="lazy"
+                        fetchPriority="low"
                         sizes="(min-width: 1280px) 280px, (min-width: 768px) 45vw, 90vw"
                         className={cn("object-cover", imagePosition)}
                       />
@@ -288,6 +313,29 @@ export default function Page() {
 
         <WorkflowSection />
 
+        <section id="answers" className="px-4 pb-20 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <SectionHeading
+              eyebrow="Answers"
+              title="Clear answers for search, teams, and AI summaries."
+              description="The essentials are written plainly so people and answer engines can understand where VantumIQP fits."
+            />
+
+            <div className="divide-y divide-border border-y border-border">
+              {faqItems.map(({ question, answer }) => (
+                <article key={question} className="py-6">
+                  <h3 className="text-lg font-medium tracking-[-0.02em]">
+                    {question}
+                  </h3>
+                  <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+                    {answer}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="px-4 pb-20 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[1.1fr_0.9fr]">
             <div
@@ -300,6 +348,8 @@ export default function Page() {
                 alt=""
                 data-animate="image-parallax"
                 fill
+                loading="lazy"
+                fetchPriority="low"
                 sizes="(min-width: 1024px) 55vw, 100vw"
                 className="object-cover"
               />
@@ -364,6 +414,8 @@ export default function Page() {
               alt=""
               data-animate="image-parallax"
               fill
+              loading="lazy"
+              fetchPriority="low"
               sizes="(min-width: 1024px) 1280px, 100vw"
               className="object-cover opacity-35"
             />
@@ -411,6 +463,12 @@ export default function Page() {
                 className="transition-colors hover:text-foreground"
               >
                 Workflow
+              </a>
+              <a
+                href="#answers"
+                className="transition-colors hover:text-foreground"
+              >
+                Answers
               </a>
               <a
                 href="#demo"
