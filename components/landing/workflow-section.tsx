@@ -295,7 +295,10 @@ export function WorkflowSection() {
 
   return (
     <section id="workflow" className="px-4 pb-24 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-start lg:gap-16">
+      <div
+        data-animate="workflow-shell"
+        className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-start lg:gap-16"
+      >
 
         {/* ── Left: step list ── */}
         <div className="space-y-10">

@@ -56,4 +56,17 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain("bg-background")
     expect(html).not.toContain("bg-[#f6f7f3]")
   })
+
+  test("exposes stable hooks for GSAP micro animations", () => {
+    const html = renderToStaticMarkup(<Page />)
+
+    expect(html).toContain('data-gsap-scope="landing"')
+    expect(html).toContain('data-animate="hero-title"')
+    expect(html).toContain('data-animate="hero-dashboard"')
+    expect(html).toContain('data-animate="section-heading"')
+    expect(html).toContain('data-animate="capability-card"')
+    expect(html).toContain('data-animate="product-preview"')
+    expect(html).toContain('data-animate="workflow-shell"')
+    expect(html).toContain('data-animate="demo-panel"')
+  })
 })

@@ -84,7 +84,11 @@ export function DemoAccessForm({
   }
 
   return (
-    <Card className="border-border bg-card/95 py-0 text-card-foreground shadow-sm backdrop-blur">
+    <Card
+      data-animate="demo-form"
+      data-motion="lift"
+      className="border-border bg-card/95 py-0 text-card-foreground shadow-sm backdrop-blur"
+    >
       <CardHeader className="gap-3 border-b border-border px-5 py-5 sm:px-6">
         <CardTitle className="font-heading text-3xl leading-none text-card-foreground">
           Request demo access
@@ -174,6 +178,7 @@ export function DemoAccessForm({
             <Button
               type="submit"
               size="lg"
+              data-animate="interactive-button"
               className="h-11 rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90"
               disabled={isSubmitting}
             >

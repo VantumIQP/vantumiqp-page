@@ -11,6 +11,7 @@ import {
 
 import { BackToTop } from "@/components/landing/back-to-top"
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
+import { LandingMotion } from "@/components/landing/landing-motion"
 import { Navbar } from "@/components/landing/navbar"
 import { SectionHeading } from "@/components/landing/section-heading"
 import { WorkflowSection } from "@/components/landing/workflow-section"
@@ -84,12 +85,20 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <main className="min-h-svh overflow-hidden bg-background pt-[69px] text-foreground">
+      <LandingMotion />
+      <main
+        data-gsap-scope="landing"
+        className="min-h-svh overflow-hidden bg-background pt-[69px] text-foreground"
+      >
         <section className="px-4 pt-4 sm:px-6 lg:px-8">
-          <div className="relative mx-auto min-h-[720px] max-w-7xl overflow-hidden rounded-xl border border-border bg-card text-primary-foreground shadow-[0_30px_90px_rgba(15,23,42,0.18)]">
+          <div
+            data-animate="hero-shell"
+            className="relative mx-auto min-h-[720px] max-w-7xl overflow-hidden rounded-xl border border-border bg-card text-primary-foreground shadow-[0_30px_90px_rgba(15,23,42,0.18)]"
+          >
             <Image
               src="/images/vantumiqp/night-sea.avif"
               alt=""
+              data-animate="image-parallax"
               fill
               priority
               sizes="(min-width: 1280px) 1280px, 100vw"
@@ -98,7 +107,10 @@ export default function Page() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.16),transparent_26%),linear-gradient(180deg,rgba(7,17,22,0.22),rgba(7,17,22,0.82)_68%,rgba(7,17,22,0.96))]" />
 
             <div className="relative flex min-h-[720px] flex-col items-center px-5 pt-8 pb-7 text-center sm:px-8 lg:px-10">
-              <div className="flex flex-col items-center gap-2">
+              <div
+                data-animate="hero-kicker"
+                className="flex flex-col items-center gap-2"
+              >
                 <Badge className="rounded-full border border-primary-foreground/15 bg-primary-foreground/10 px-3 py-1 text-[0.68rem] tracking-[0.28em] text-primary-foreground uppercase hover:bg-primary-foreground/10">
                   Powered by Apache Superset
                 </Badge>
@@ -109,19 +121,29 @@ export default function Page() {
               </div>
 
               <div className="mt-16 max-w-4xl space-y-6">
-                <h1 className="font-heading text-5xl leading-[0.94] tracking-[-0.04em] text-balance sm:text-6xl lg:text-7xl">
+                <h1
+                  data-animate="hero-title"
+                  className="font-heading text-5xl leading-[0.94] tracking-[-0.04em] text-balance sm:text-6xl lg:text-7xl"
+                >
                   Open your data. See the story. Share the answer.
                 </h1>
-                <p className="mx-auto max-w-2xl text-sm leading-7 text-primary-foreground/75 sm:text-base">
+                <p
+                  data-animate="hero-copy"
+                  className="mx-auto max-w-2xl text-sm leading-7 text-primary-foreground/75 sm:text-base"
+                >
                   VantumIQP is a calm BI workspace for dashboards, SQL
                   exploration, and decision-ready reporting—built on Apache
                   Superset and tuned for teams that want clarity before
                   complexity.
                 </p>
 
-                <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <div
+                  data-animate="hero-actions"
+                  className="flex flex-col justify-center gap-3 sm:flex-row"
+                >
                   <a
                     href="#demo"
+                    data-animate="interactive-button"
                     className={cn(
                       buttonVariants({ size: "lg" }),
                       "h-11 rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90"
@@ -132,6 +154,7 @@ export default function Page() {
                   </a>
                   <a
                     href="#product"
+                    data-animate="interactive-button"
                     className={cn(
                       buttonVariants({ variant: "outline", size: "lg" }),
                       "h-11 rounded-full border-primary-foreground/20 bg-primary-foreground/10 px-5 text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground"
@@ -146,6 +169,7 @@ export default function Page() {
                 {proofPoints.map((point) => (
                   <div
                     key={point}
+                    data-animate="hero-chip"
                     className="rounded-full border border-primary-foreground/15 bg-primary-foreground/10 px-4 py-1.5 text-sm text-primary-foreground/80 backdrop-blur"
                   >
                     {point}
@@ -153,7 +177,11 @@ export default function Page() {
                 ))}
               </div>
 
-              <figure className="mt-auto w-full max-w-5xl overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-[0_24px_60px_rgba(15,23,42,0.18)]">
+              <figure
+                data-animate="hero-dashboard"
+                data-motion="lift"
+                className="mt-auto w-full max-w-5xl overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-[0_24px_60px_rgba(15,23,42,0.18)]"
+              >
                 <div className="flex items-center justify-between border-b border-border bg-muted/70 px-4 py-3 text-xs text-muted-foreground">
                   <span>Live product view</span>
                   <span>SaaS dashboard example</span>
@@ -162,6 +190,7 @@ export default function Page() {
                   <Image
                     src="/images/vantumiqp/dashboard-screenshot.png"
                     alt="VantumIQP dashboard screenshot"
+                    data-animate="card-image"
                     fill
                     sizes="(min-width: 1024px) 960px, 90vw"
                     className="object-cover object-top"
@@ -181,7 +210,11 @@ export default function Page() {
                 description="VantumIQP keeps the core Superset strengths intact, but presents them with a calmer path from raw tables to stakeholder-ready dashboards."
               />
 
-              <div className="relative overflow-hidden rounded-xl border border-border bg-[#071116] p-2 shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
+              <div
+                data-animate="product-preview"
+                data-motion="lift"
+                className="relative overflow-hidden rounded-xl border border-border bg-[#071116] p-2 shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
+              >
                 <div className="flex items-center justify-between border-b border-white/10 px-3 py-2 text-xs text-white/60">
                   <span>Dashboard workspace</span>
                   <span>Published view</span>
@@ -190,6 +223,8 @@ export default function Page() {
                   <Image
                     src="/images/vantumiqp/dashboard-3.jpg"
                     alt="Detailed sales dashboard inside VantumIQP"
+                    data-animate="card-image"
+                    data-parallax="image"
                     fill
                     sizes="(min-width: 1024px) 680px, 90vw"
                     className="object-cover object-top"
@@ -218,12 +253,15 @@ export default function Page() {
                 }) => (
                   <Card
                     key={title}
+                    data-animate="capability-card"
+                    data-motion="lift"
                     className="border-border bg-card py-0 shadow-sm"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted">
                       <Image
                         src={imageSrc}
                         alt={imageAlt}
+                        data-animate="card-image"
                         fill
                         sizes="(min-width: 1280px) 280px, (min-width: 768px) 45vw, 90vw"
                         className={cn("object-cover", imagePosition)}
@@ -252,10 +290,15 @@ export default function Page() {
 
         <section className="px-4 pb-20 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="relative min-h-[360px] overflow-hidden rounded-xl border border-border">
+            <div
+              data-animate="cta-card"
+              data-motion="lift"
+              className="relative min-h-[360px] overflow-hidden rounded-xl border border-border"
+            >
               <Image
                 src="/images/vantumiqp/sunset-sea.avif"
                 alt=""
+                data-animate="image-parallax"
                 fill
                 sizes="(min-width: 1024px) 55vw, 100vw"
                 className="object-cover"
@@ -286,7 +329,12 @@ export default function Page() {
                     "The demo is shaped around the questions your team already asks every week.",
                 },
               ].map(({ icon: Icon, title, description }) => (
-                <Card key={title} className="border-border bg-card py-0">
+                <Card
+                  key={title}
+                  data-animate="cta-card"
+                  data-motion="lift"
+                  className="border-border bg-card py-0"
+                >
                   <CardContent className="space-y-5 p-5 sm:p-6">
                     <div className="flex size-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
                       <Icon className="size-4" />
@@ -307,10 +355,14 @@ export default function Page() {
         </section>
 
         <section id="demo" className="px-4 pb-4 sm:px-6 lg:px-8">
-          <div className="relative mx-auto overflow-hidden rounded-xl bg-primary px-5 py-6 text-primary-foreground shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 lg:max-w-7xl lg:px-10 lg:py-10">
+          <div
+            data-animate="demo-panel"
+            className="relative mx-auto overflow-hidden rounded-xl bg-primary px-5 py-6 text-primary-foreground shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 lg:max-w-7xl lg:px-10 lg:py-10"
+          >
             <Image
               src="/images/vantumiqp/hero-aurora.avif"
               alt=""
+              data-animate="image-parallax"
               fill
               sizes="(min-width: 1024px) 1280px, 100vw"
               className="object-cover opacity-35"

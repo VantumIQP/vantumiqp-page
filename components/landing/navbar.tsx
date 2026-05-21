@@ -46,6 +46,7 @@ export function Navbar() {
 
   return (
     <header
+      data-animate="nav-shell"
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
@@ -78,6 +79,7 @@ export function Navbar() {
               <a
                 key={href}
                 href={href}
+                data-animate="nav-link"
                 className={cn(
                   "relative py-0.5 transition-colors",
                   isActive
@@ -97,12 +99,14 @@ export function Navbar() {
         <div className="hidden items-center gap-4 md:flex">
           <a
             href="#demo"
+            data-animate="nav-link"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Sign in
           </a>
           <a
             href="#demo"
+            data-animate="interactive-button"
             className={cn(
               buttonVariants({ size: "sm" }),
               "h-9 rounded-full bg-primary px-4 text-primary-foreground hover:bg-primary/90"
@@ -115,6 +119,7 @@ export function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <a
             href="#demo"
+            data-animate="interactive-button"
             className={cn(
               buttonVariants({ size: "sm" }),
               "h-9 rounded-full bg-primary px-4 text-primary-foreground hover:bg-primary/90"
@@ -143,6 +148,7 @@ export function Navbar() {
             <a
               key={href}
               href={href}
+              data-animate="nav-link"
               onClick={() => setMenuOpen(false)}
               className="border-b border-border/50 py-3 text-sm text-muted-foreground transition-colors last:border-0 hover:text-foreground"
             >
@@ -151,6 +157,7 @@ export function Navbar() {
           ))}
           <a
             href="#demo"
+            data-animate="nav-link"
             onClick={() => setMenuOpen(false)}
             className="py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
