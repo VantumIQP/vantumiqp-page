@@ -31,6 +31,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/vantumiqp/vantumiqp_favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/images/vantumiqp/vantumiqp_favicon.ico",
+  },
   openGraph: {
     title: "VantumIQP | Calm BI workspace for dashboards and SQL",
     description: siteConfig.description,
