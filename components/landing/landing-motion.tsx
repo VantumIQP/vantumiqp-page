@@ -110,19 +110,6 @@ export function LandingMotion() {
             "-=0.16"
           )
 
-        const navShell = document.querySelector<HTMLElement>(
-          animateSelector("nav-shell")
-        )
-
-        if (navShell) {
-          gsap.from(navShell, {
-            autoAlpha: 0,
-            y: -10,
-            duration: 0.55,
-            ease: "power3.out",
-          })
-        }
-
         gsap.utils
           .toArray<HTMLElement>(sectionSelectors, scope)
           .forEach((section) => {

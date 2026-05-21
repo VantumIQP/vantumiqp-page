@@ -80,6 +80,13 @@ describe("VantumIQP landing page", () => {
     expect(html).toContain('data-animate="demo-panel"')
   })
 
+  test("keeps the fixed navbar outside GSAP opacity animation targets", () => {
+    const html = renderPage()
+
+    expect(html).toContain("fixed inset-x-0 top-0 z-50")
+    expect(html).not.toContain('data-animate="nav-shell"')
+  })
+
   test("keeps GSAP transforms off Next image elements", () => {
     const html = renderPage()
 
