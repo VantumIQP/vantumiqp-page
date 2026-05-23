@@ -22,6 +22,8 @@ type BlogPostCardProps = {
 export function BlogPostCard({ post, featured = false }: BlogPostCardProps) {
   return (
     <Card
+      data-animate="blog-card"
+      data-motion="blog-lift"
       className={cn(
         "border-border bg-card py-0 shadow-sm transition-transform duration-200 hover:-translate-y-1",
         featured && "lg:grid lg:grid-cols-[1.08fr_0.92fr]"

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
+import { BlogMotion } from "@/components/blog/blog-motion"
 import { BackToTop } from "@/components/landing/back-to-top"
 import { Navbar } from "@/components/landing/navbar"
 import { SiteFooter } from "@/components/layout/site-footer"
@@ -112,12 +113,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       <Navbar />
-      <main className="min-h-svh overflow-hidden bg-background pt-[69px] text-foreground">
+      <main
+        data-gsap-scope="blog"
+        className="min-h-svh overflow-hidden bg-background pt-[69px] text-foreground"
+      >
+        <BlogMotion />
         <article>
           <header className="px-4 pt-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-5xl overflow-hidden rounded-xl border border-border bg-card shadow-[0_24px_80px_rgba(15,23,42,0.12)]">
+            <div
+              data-animate="blog-post-header"
+              className="mx-auto max-w-5xl overflow-hidden rounded-xl border border-border bg-card shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
+            >
               {post.heroImage ? (
-                <div className="relative aspect-[16/8] bg-muted">
+                <div
+                  data-animate="blog-post-media"
+                  className="relative aspect-[16/8] bg-muted"
+                >
                   <Image
                     src={post.heroImage}
                     alt={post.heroImageAlt ?? ""}
@@ -131,17 +142,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               ) : null}
 
               <div className="px-5 py-8 sm:px-8 sm:py-10 lg:px-10">
-                <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                <div
+                  data-animate="blog-kicker"
+                  className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
+                >
                   <Badge variant="secondary" className="rounded-full">
                     {post.tags[0]}
                   </Badge>
                   <span>{formatBlogDate(post.publishedAt)}</span>
                   <span>{post.readingTime}</span>
                 </div>
-                <h1 className="mt-6 max-w-4xl font-heading text-5xl leading-[0.94] tracking-[-0.04em] text-balance text-foreground sm:text-6xl">
+                <h1
+                  data-animate="blog-title"
+                  className="mt-6 max-w-4xl font-heading text-5xl leading-[0.94] tracking-[-0.04em] text-balance text-foreground sm:text-6xl"
+                >
                   {post.title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
+                <p
+                  data-animate="blog-copy"
+                  className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground"
+                >
                   {post.description}
                 </p>
               </div>
@@ -149,7 +169,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </header>
 
           <div className="px-4 py-16 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-base">
+            <div
+              data-animate="blog-content"
+              className="mx-auto max-w-3xl text-base"
+            >
               <Post />
             </div>
           </div>

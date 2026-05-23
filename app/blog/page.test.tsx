@@ -14,6 +14,20 @@ describe("blog index page", () => {
     expect(html).toContain('href="/#demo"')
   })
 
+  test("exposes shared GSAP hooks for blog micro animations", async () => {
+    const html = renderToStaticMarkup(await BlogPage())
+
+    expect(html).toContain('data-gsap-scope="blog"')
+    expect(html).toContain('data-animate="blog-hero"')
+    expect(html).toContain('data-animate="blog-title"')
+    expect(html).toContain('data-animate="blog-copy"')
+    expect(html).toContain('data-animate="blog-actions"')
+    expect(html).toContain('data-animate="blog-aside"')
+    expect(html).toContain('data-animate="blog-section-heading"')
+    expect(html).toContain('data-animate="blog-card"')
+    expect(html).toContain('data-motion="blog-lift"')
+  })
+
   test("defines blog index metadata", () => {
     expect(metadata.title).toEqual({ absolute: "Blog | VantumIQP" })
     expect(metadata.description).toContain("business intelligence")
