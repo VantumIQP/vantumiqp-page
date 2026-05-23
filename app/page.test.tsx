@@ -42,7 +42,19 @@ describe("VantumIQP landing page", () => {
     const html = renderToStaticMarkup(<Page />)
 
     expect(html).toContain("Sign in")
+    expect(html).toContain("Blog")
     expect(html).toContain("bg-background")
     expect(html).not.toContain("bg-[#f6f7f3]")
+  })
+
+  test("promotes the latest blog posts without weakening the demo funnel", () => {
+    const html = renderToStaticMarkup(<Page />)
+
+    expect(html).toContain("Field Notes")
+    expect(html).toContain("Governed Dashboards Without Slowing Analysts Down")
+    expect(html).toContain("What Apache Superset Gives a Modern BI Workspace")
+    expect(html).toContain("Why Teams Outgrow Screenshot Reporting")
+    expect(html).toContain('href="/blog"')
+    expect(html).toContain("Request demo access")
   })
 })

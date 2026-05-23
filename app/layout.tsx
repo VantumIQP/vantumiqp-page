@@ -1,7 +1,9 @@
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google"
+import type { Metadata } from "next"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -17,6 +19,39 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    type: "website",
+    images: [
+      {
+        url: "/images/vantumiqp/dashboard-screenshot.png",
+        width: 1200,
+        height: 630,
+        alt: "VantumIQP dashboard screenshot",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: ["/images/vantumiqp/dashboard-screenshot.png"],
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,6 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={cn(
         "antialiased",

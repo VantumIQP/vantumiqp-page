@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import {
   ArrowRight,
   BarChart3,
@@ -9,15 +10,17 @@ import {
   Sparkles,
 } from "lucide-react"
 
+import { BlogPostCard } from "@/components/blog/blog-post-card"
 import { BackToTop } from "@/components/landing/back-to-top"
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
 import { Navbar } from "@/components/landing/navbar"
 import { SectionHeading } from "@/components/landing/section-heading"
 import { WorkflowSection } from "@/components/landing/workflow-section"
+import { SiteFooter } from "@/components/layout/site-footer"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { buttonVariants } from "@/components/ui/button"
-import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
+import { getLatestBlogPosts } from "@/lib/blog"
 import { cn } from "@/lib/utils"
 
 const proofPoints = [
@@ -65,22 +68,9 @@ const capabilities = [
   },
 ]
 
-function BrandMark({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className={cn("relative shrink-0", compact ? "h-6 w-8" : "h-7 w-10")}>
-      <Image
-        src={BRAND_LOGO_SRC}
-        alt="VantumIQP logo"
-        fill
-        priority={!compact}
-        sizes={compact ? "32px" : "40px"}
-        className="object-contain"
-      />
-    </div>
-  )
-}
-
 export default function Page() {
+  const latestPosts = getLatestBlogPosts(3)
+
   return (
     <>
       <Navbar />
@@ -306,6 +296,34 @@ export default function Page() {
           </div>
         </section>
 
+        <section className="px-4 pb-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <SectionHeading
+                eyebrow="Field Notes"
+                title="Useful writing for teams building trusted reporting."
+                description="Short reads on business intelligence, Apache Superset, dashboard governance, and how teams keep reporting credible."
+              />
+              <Link
+                href="/blog"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "w-fit rounded-full px-5"
+                )}
+              >
+                View all articles
+                <ArrowRight data-icon="inline-end" />
+              </Link>
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {latestPosts.map((post) => (
+                <BlogPostCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="demo" className="px-4 pb-4 sm:px-6 lg:px-8">
           <div className="relative mx-auto overflow-hidden rounded-xl bg-primary px-5 py-6 text-primary-foreground shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 lg:max-w-7xl lg:px-10 lg:py-10">
             <Image
@@ -340,35 +358,7 @@ export default function Page() {
         </section>
 
         <BackToTop />
-
-        <footer className="px-4 pt-10 pb-8 sm:px-6 lg:px-8">
-          <div className="mx-auto flex max-w-7xl flex-col gap-5 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <BrandMark compact />
-              <span>VantumIQP</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-5">
-              <a
-                href="#product"
-                className="transition-colors hover:text-foreground"
-              >
-                Product
-              </a>
-              <a
-                href="#workflow"
-                className="transition-colors hover:text-foreground"
-              >
-                Workflow
-              </a>
-              <a
-                href="#demo"
-                className="transition-colors hover:text-foreground"
-              >
-                Demo
-              </a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </main>
     </>
   )
