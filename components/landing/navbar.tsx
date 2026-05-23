@@ -14,7 +14,7 @@ const navLinks = [
   { href: "/#product", label: "Product", sectionId: "product" },
   { href: "/#workflow", label: "Workflow", sectionId: "workflow" },
   { href: "/blog", label: "Blog" },
-  { href: "#answers", label: "Answers" },
+  { href: "/#answers", label: "Answers", sectionId: "answers" },
   { href: "/#demo", label: "Demo", sectionId: "demo" },
 ]
 
@@ -31,7 +31,9 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    const sectionIds = navLinks.map(({ href }) => href.slice(1))
+    const sectionIds = navLinks.flatMap(({ sectionId }) =>
+      sectionId ? [sectionId] : []
+    )
     const observers: IntersectionObserver[] = []
 
     sectionIds.forEach((id) => {
@@ -61,7 +63,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-1">
-          <div className="relative h-12 w-12 shrink-0">
+          <div className="relative h-8 w-8 shrink-0 sm:h-9 sm:w-9 lg:h-10 lg:w-10">
             <Image
               src={BRAND_LOGO_SRC}
               alt="VantumIQP logo"
@@ -105,8 +107,8 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ModeToggle />
-          <a
-            href="#demo"
+          <Link
+            href="/#demo"
             data-animate="interactive-button"
             className={cn(
               buttonVariants({ size: "sm" }),
@@ -119,8 +121,8 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 md:hidden">
           <ModeToggle />
-          <a
-            href="#demo"
+          <Link
+            href="/#demo"
             data-animate="interactive-button"
             className={cn(
               buttonVariants({ size: "sm" }),

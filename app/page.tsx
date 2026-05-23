@@ -12,7 +12,6 @@ import {
 
 import { BlogPostCard } from "@/components/blog/blog-post-card"
 import { BackToTop } from "@/components/landing/back-to-top"
-import { CookiePreferencesLink } from "@/components/cookie-consent/cookie-preferences-link"
 import { DemoAccessForm } from "@/components/landing/demo-access-form"
 import { LandingMotion } from "@/components/landing/landing-motion"
 import { Navbar } from "@/components/landing/navbar"
@@ -70,23 +69,6 @@ const capabilities = [
     imagePosition: "object-left-top",
   },
 ]
-
-function BrandMark({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className={cn("relative shrink-0", compact ? "h-6 w-8" : "h-7 w-10")}>
-      <Image
-        src={BRAND_LOGO_SRC}
-        alt="VantumIQP logo"
-        fill
-        priority={!compact}
-        loading={compact ? "lazy" : undefined}
-        fetchPriority={compact ? "low" : "high"}
-        sizes={compact ? "32px" : "40px"}
-        className="object-contain"
-      />
-    </div>
-  )
-}
 
 function StructuredData() {
   return (
@@ -492,54 +474,7 @@ export default function Page() {
         </section>
 
         <BackToTop />
-
-        <footer className="px-4 pt-10 pb-8 sm:px-6 lg:px-8">
-          <div className="mx-auto flex max-w-7xl flex-col gap-5 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <BrandMark compact />
-              <span>VantumIQP</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-5">
-              <a
-                href="#product"
-                className="transition-colors hover:text-foreground"
-              >
-                Product
-              </a>
-              <a
-                href="#workflow"
-                className="transition-colors hover:text-foreground"
-              >
-                Workflow
-              </a>
-              <a
-                href="#answers"
-                className="transition-colors hover:text-foreground"
-              >
-                Answers
-              </a>
-              <a
-                href="#demo"
-                className="transition-colors hover:text-foreground"
-              >
-                Demo
-              </a>
-              <a
-                href="/privacy"
-                className="transition-colors hover:text-foreground"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="/terms"
-                className="transition-colors hover:text-foreground"
-              >
-                Terms
-              </a>
-              <CookiePreferencesLink />
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </main>
     </>
   )

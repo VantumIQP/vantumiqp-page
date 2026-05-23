@@ -1,13 +1,17 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { CookiePreferencesLink } from "@/components/cookie-consent/cookie-preferences-link"
 import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
 
 const footerLinks = [
   { href: "/#product", label: "Product" },
   { href: "/#workflow", label: "Workflow" },
   { href: "/blog", label: "Blog" },
+  { href: "/#answers", label: "Answers" },
   { href: "/#demo", label: "Demo" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms" },
 ]
 
 export function SiteFooter() {
@@ -39,6 +43,7 @@ export function SiteFooter() {
               {link.label}
             </Link>
           ))}
+          <CookiePreferencesLink />
         </div>
       </div>
     </footer>
