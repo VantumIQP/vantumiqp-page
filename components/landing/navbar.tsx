@@ -8,11 +8,13 @@ import { Menu, X } from "lucide-react"
 import { BRAND_LOGO_SRC } from "@/lib/brand-assets"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { ModeToggle } from "@/components/mode-toggle"
 
 const navLinks = [
   { href: "/#product", label: "Product", sectionId: "product" },
   { href: "/#workflow", label: "Workflow", sectionId: "workflow" },
   { href: "/blog", label: "Blog" },
+  { href: "#answers", label: "Answers" },
   { href: "/#demo", label: "Demo", sectionId: "demo" },
 ]
 
@@ -29,7 +31,7 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    const sectionIds = ["product", "workflow", "demo"]
+    const sectionIds = navLinks.map(({ href }) => href.slice(1))
     const observers: IntersectionObserver[] = []
 
     sectionIds.forEach((id) => {
@@ -65,7 +67,8 @@ export function Navbar() {
               alt="VantumIQP logo"
               fill
               priority
-              sizes="48px"
+              fetchPriority="high"
+              sizes="(min-width: 1024px) 40px, (min-width: 640px) 36px, 32px"
               className="object-contain"
             />
           </div>
@@ -83,6 +86,7 @@ export function Navbar() {
               <Link
                 key={href}
                 href={href}
+                data-animate="nav-link"
                 className={cn(
                   "relative py-0.5 transition-colors",
                   isActive
@@ -99,15 +103,11 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
-          <Link
-            href="/#demo"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Sign in
-          </Link>
-          <Link
-            href="/#demo"
+        <div className="hidden items-center gap-2 md:flex">
+          <ModeToggle />
+          <a
+            href="#demo"
+            data-animate="interactive-button"
             className={cn(
               buttonVariants({ size: "sm" }),
               "h-9 rounded-full bg-primary px-4 text-primary-foreground hover:bg-primary/90"
@@ -118,8 +118,10 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          <Link
-            href="/#demo"
+          <ModeToggle />
+          <a
+            href="#demo"
+            data-animate="interactive-button"
             className={cn(
               buttonVariants({ size: "sm" }),
               "h-9 rounded-full bg-primary px-4 text-primary-foreground hover:bg-primary/90"
@@ -148,6 +150,7 @@ export function Navbar() {
             <Link
               key={href}
               href={href}
+              data-animate="nav-link"
               onClick={() => setMenuOpen(false)}
               className="border-b border-border/50 py-3 text-sm text-muted-foreground transition-colors last:border-0 hover:text-foreground"
             >

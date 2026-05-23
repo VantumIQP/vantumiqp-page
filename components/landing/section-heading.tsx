@@ -18,6 +18,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div
+      data-animate="section-heading"
       className={cn(
         "max-w-2xl space-y-4",
         align === "center" && "mx-auto text-center",

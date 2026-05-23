@@ -2,9 +2,13 @@ import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google"
 import type { Metadata } from "next"
 
 import "./globals.css"
+import { VercelAnalytics } from "@/components/analytics/vercel-analytics"
+import { CookieConsentProvider } from "@/components/cookie-consent/cookie-consent-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
 import { cn } from "@/lib/utils"
+
+export { metadata } from "@/lib/seo"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -71,7 +75,12 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <CookieConsentProvider>
+            {children}
+            <VercelAnalytics />
+          </CookieConsentProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
