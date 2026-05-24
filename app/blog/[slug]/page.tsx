@@ -110,6 +110,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     keywords: post.tags.join(", "),
   }
 
+  const faqStructuredData =
+    post.faq && post.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null
+
   return (
     <>
       <Navbar />
@@ -182,6 +198,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        {faqStructuredData ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqStructuredData),
+            }}
+          />
+        ) : null}
         <BackToTop />
         <SiteFooter />
       </main>

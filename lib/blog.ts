@@ -12,6 +12,11 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
   timeZone: "UTC",
 })
 
+export type FaqItem = {
+  question: string
+  answer: string
+}
+
 export type BlogPost = {
   slug: string
   title: string
@@ -22,6 +27,7 @@ export type BlogPost = {
   heroImage?: string
   heroImageAlt?: string
   readingTime: string
+  faq?: FaqItem[]
 }
 
 type BlogFrontmatter = {
@@ -32,6 +38,7 @@ type BlogFrontmatter = {
   tags?: unknown
   heroImage?: unknown
   heroImageAlt?: unknown
+  faq?: unknown
 }
 
 function assertString(
@@ -78,6 +85,19 @@ function readingTimeFor(content: string) {
   return `${minutes} min read`
 }
 
+function parseFaq(value: unknown): FaqItem[] {
+  if (!Array.isArray(value)) return []
+  return value.filter(
+    (item) =>
+      item !== null &&
+      typeof item === "object" &&
+      typeof item.question === "string" &&
+      item.question.trim().length > 0 &&
+      typeof item.answer === "string" &&
+      item.answer.trim().length > 0
+  ).map((item) => ({ question: item.question.trim(), answer: item.answer.trim() }))
+}
+
 function parseBlogPost(filename: string, source: string): BlogPost {
   const { content, data } = matter(source)
   const frontmatter = data as BlogFrontmatter
@@ -96,6 +116,8 @@ function parseBlogPost(filename: string, source: string): BlogPost {
       ? frontmatter.heroImageAlt.trim()
       : undefined
 
+  const faq = parseFaq(frontmatter.faq)
+
   return {
     slug: basename(filename, ".mdx"),
     title: assertString(frontmatter.title, "title", filename),
@@ -106,6 +128,7 @@ function parseBlogPost(filename: string, source: string): BlogPost {
     ...(heroImage ? { heroImage } : {}),
     ...(heroImageAlt ? { heroImageAlt } : {}),
     readingTime: readingTimeFor(content),
+    ...(faq.length > 0 ? { faq } : {}),
   }
 }
 
